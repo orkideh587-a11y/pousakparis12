@@ -2,350 +2,197 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>پوشاک تخصصی پاریس | سیستم حسابداری</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>پوشاک تخصصی پاریس</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e3c72">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            min-height: 100vh;
-            padding: 15px;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(4px);
-            border-radius: 24px;
-            padding: 18px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .login-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
             background: linear-gradient(135deg, #1e3c72, #2a5298);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
+            min-height: 100vh;
+            padding: 12px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .glass {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        /* ورود */
+        .login-wrapper {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex; justify-content: center; align-items: center; z-index: 2000;
         }
         .login-box {
-            background: white;
-            border-radius: 32px;
-            padding: 30px 25px;
-            width: 90%;
-            max-width: 380px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 90%; max-width: 380px; padding: 30px 20px; background: white;
+            border-radius: 32px; text-align: center;
         }
-        .login-box .logo {
-            font-size: 60px;
-            margin-bottom: 10px;
-        }
-        .login-box h2 {
-            color: #1e3c72;
-            margin-bottom: 8px;
-        }
-        .login-box p {
-            color: #666;
-            margin-bottom: 20px;
-        }
+        .login-box .logo-icon { font-size: 60px; }
+        .login-box h1 { color: #1e3c72; font-size: 1.5em; margin: 10px 0; }
         .login-box input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 40px;
-            font-size: 16px;
-            text-align: center;
-            margin-bottom: 15px;
+            width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 40px;
+            font-size: 16px; text-align: center; margin: 10px 0;
         }
         .login-box button {
-            width: 100%;
-            padding: 12px;
-            background: #1e3c72;
-            color: white;
-            border: none;
-            border-radius: 40px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
+            width: 100%; padding: 14px; background: #1e3c72; color: white;
+            border: none; border-radius: 40px; font-size: 16px;
         }
-        .login-box .error {
-            color: red;
-            margin-top: 10px;
-            display: none;
-        }
+        /* هدر */
         .main-header {
-            background: rgba(255,255,255,0.95);
-            border-radius: 24px;
-            padding: 12px 20px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 16px; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;
         }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo-small {
-            font-size: 40px;
-        }
-        .brand h1 {
-            font-size: 1.3rem;
-            color: #1e3c72;
-        }
-        .brand p {
-            font-size: 0.7rem;
-            color: #555;
-        }
-        .header-btns {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
+        .logo-area { display: flex; align-items: center; gap: 8px; }
+        .logo-icon-small { font-size: 32px; }
+        .brand-text h1 { font-size: 1.2em; color: #1e3c72; }
+        .brand-text p { font-size: 0.7em; color: #666; }
+        .header-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
         .header-btn {
-            background: #1e3c72;
-            color: white;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 12px;
-            cursor: pointer;
+            background: #1e3c72; padding: 8px 14px; border-radius: 40px;
+            color: white; font-size: 12px; border: none;
         }
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 12px;
-            margin-bottom: 20px;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;
         }
         .stat-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 12px;
+            background: rgba(255,255,255,0.95); padding: 12px; border-radius: 20px;
             text-align: center;
         }
-        .stat-card h4 {
-            font-size: 11px;
-            color: #555;
-            margin-bottom: 5px;
-        }
-        .stat-card .value {
-            font-size: 18px;
-            font-weight: bold;
-            color: #1e3c72;
-        }
+        .stat-card h3 { font-size: 11px; color: #666; margin-bottom: 4px; }
+        .stat-card .value { font-size: 16px; font-weight: bold; color: #1e3c72; }
+        /* تب‌ها */
         .tabs {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+            display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap;
         }
         .tab-btn {
-            background: rgba(255,255,255,0.8);
-            border: none;
-            padding: 8px 18px;
-            border-radius: 40px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
+            background: rgba(255,255,255,0.8); border: none; padding: 8px 14px;
+            border-radius: 30px; font-size: 12px; font-weight: bold; color: #333;
         }
-        .tab-btn.active {
-            background: #1e3c72;
-            color: white;
+        .tab-btn.active { background: #1e3c72; color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        /* فرم‌ها */
+        .form-card {
+            background: rgba(255,255,255,0.95); padding: 16px; border-radius: 24px; margin-bottom: 16px;
         }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 13px;
-            color: #333;
-        }
+        .form-group { margin-bottom: 14px; }
+        label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 5px; color: #333; }
         input, select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 16px;
-            font-size: 14px;
-            background: white;
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 16px;
+            font-size: 14px; background: white;
         }
         button {
-            background: #1e3c72;
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 13px;
+            background: #1e3c72; color: white; border: none; padding: 12px 20px;
+            border-radius: 30px; font-size: 14px; cursor: pointer;
         }
         .btn-success { background: #28a745; }
         .btn-danger { background: #dc3545; }
         .btn-warning { background: #ffc107; color: #333; }
-        .table-wrapper {
-            overflow-x: auto;
-        }
+        .table-wrapper { overflow-x: auto; }
         table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
+            width: 100%; border-collapse: collapse; background: white; border-radius: 16px;
             font-size: 12px;
         }
-        th, td {
-            padding: 10px;
-            text-align: right;
-            border-bottom: 1px solid #eee;
-        }
-        th {
-            background: #1e3c72;
-            color: white;
-        }
-        .barcode-box {
-            background: white;
+        th, td { padding: 8px; text-align: right; border-bottom: 1px solid #eee; }
+        th { background: #1e3c72; color: white; }
+        .barcode-container {
+            background: white; padding: 8px; border-radius: 12px; text-align: center;
+            margin: 6px; display: inline-block; width: 130px;
             border: 1px solid #ddd;
-            border-radius: 12px;
-            padding: 10px;
-            margin: 8px;
-            display: inline-block;
-            width: 160px;
-            text-align: center;
-        }
-        .barcode-number {
-            font-family: monospace;
-            margin-top: 6px;
-            font-size: 12px;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal.active {
-            display: flex;
-        }
-        .modal-content {
-            background: white;
-            border-radius: 28px;
-            padding: 20px;
-            width: 90%;
-            max-width: 450px;
         }
         .shop-address {
-            background: rgba(255,255,255,0.95);
-            border-radius: 16px;
-            padding: 10px;
-            text-align: center;
-            font-size: 12px;
-            margin-bottom: 20px;
+            background: rgba(255,255,255,0.95); padding: 10px; border-radius: 16px;
+            text-align: center; font-size: 11px; margin-bottom: 16px;
         }
-        .percent-row {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 12px;
-            margin-bottom: 20px;
-            display: flex;
-            gap: 12px;
-            align-items: center;
+        .percent-settings {
+            display: flex; gap: 8px; align-items: center; margin-bottom: 16px;
+            padding: 12px; background: rgba(255,255,255,0.95); border-radius: 20px;
             flex-wrap: wrap;
+        }
+        .modal {
+            display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: white; border-radius: 28px; padding: 20px; width: 90%; max-width: 400px;
         }
         @media print {
             body * { visibility: hidden; }
             .print-area, .print-area * { visibility: visible; }
-            .print-area { position: fixed; top: 0; right: 0; width: 70mm; padding: 3mm; background: white; }
+            .print-area { position: fixed; top: 0; right: 0; width: 70mm; padding: 2mm; background: white; }
             .no-print { display: none; }
         }
-        @media (max-width: 700px) {
-            .stats-grid { grid-template-columns: repeat(2,1fr); }
-            .tab-btn { padding: 6px 12px; font-size: 11px; }
+        @media (min-width: 700px) {
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 1000px) {
+            .stats-grid { grid-template-columns: repeat(6, 1fr); }
         }
     </style>
 </head>
 <body>
 
-<!-- صفحه لاگین -->
 <div id="loginScreen" class="login-wrapper">
     <div class="login-box">
-        <div class="logo">👔🤵</div>
-        <h2>پوشاک تخصصی پاریس</h2>
+        <div class="logo-icon">👔🤵</div>
+        <h1>پوشاک تخصصی پاریس</h1>
         <p>سیستم حسابداری حرفه‌ای</p>
-        <div style="background:#f0f0f0; border-radius: 16px; padding: 6px; margin-bottom: 15px; font-size:12px">
+        <div style="background:#f0f0f0; padding:8px; border-radius:16px; margin-bottom:16px; font-size:12px;">
             اصفهان، نجف آباد، خیابان دکتر شریعتی
         </div>
-        <input type="password" id="passInput" placeholder="رمز عبور">
+        <input type="password" id="loginPass" placeholder="رمز عبور مدیر">
         <button onclick="checkLogin()">ورود به سیستم</button>
-        <p id="loginErrorMsg" class="error">رمز اشتباه است</p>
+        <p id="loginError" style="color:red; margin-top:10px; display:none">رمز اشتباه است</p>
     </div>
 </div>
 
-<!-- محتوای اصلی -->
 <div id="mainApp" style="display:none">
     <div class="container">
-        <div class="main-header">
+        <div class="main-header glass">
             <div class="logo-area">
-                <div class="logo-small">👔🤵</div>
-                <div class="brand">
+                <div class="logo-icon-small">👔🤵</div>
+                <div class="brand-text">
                     <h1>پوشاک تخصصی پاریس</h1>
-                    <p>کت و شلوار مردانه | سیستم فروش و حسابداری</p>
+                    <p>کت و شلوار مردانه</p>
                 </div>
             </div>
-            <div class="header-btns">
+            <div class="header-buttons">
                 <button class="header-btn" onclick="backupData()">📤 خروجی</button>
                 <button class="header-btn" onclick="document.getElementById('restoreFile').click()">📥 ورودی</button>
                 <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreData(this)">
-                <button class="header-btn" onclick="showPassModal()">🔑 تغییر رمز</button>
+                <button class="header-btn" onclick="showPassModal()">🔑 رمز</button>
                 <button class="header-btn" onclick="logout()">🚪 خروج</button>
             </div>
         </div>
 
-        <div class="shop-address">
+        <div class="shop-address glass">
             📍 اصفهان، نجف آباد، خیابان دکتر شریعتی، جنب ایران خودرو<br>
             📞 ۰۹۱۳۳۳۲۲۷۰۳
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card"><h4>موجودی کل</h4><div class="value" id="totalBalance">0 تومان</div></div>
-            <div class="stat-card"><h4>فروش امروز</h4><div class="value" id="todaySales">0 تومان</div></div>
-            <div class="stat-card"><h4>کل فروش</h4><div class="value" id="totalSales">0 تومان</div></div>
-            <div class="stat-card"><h4>سود خالص</h4><div class="value" id="netProfit">0 تومان</div></div>
-            <div class="stat-card"><h4>هزینه‌ها</h4><div class="value" id="totalExpenses">0 تومان</div></div>
-            <div class="stat-card"><h4>مشتریان</h4><div class="value" id="customerCount">0</div></div>
-            <div class="stat-card"><h4>چک‌های وصول نشده</h4><div class="value" id="totalPendingChecks">0 تومان</div></div>
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card"><h3>موجودی کل</h3><div class="value" id="totalBalance">0 تومان</div></div>
+            <div class="stat-card"><h3>فروش امروز</h3><div class="value" id="todaySales">0 تومان</div></div>
+            <div class="stat-card"><h3>کل فروش</h3><div class="value" id="totalSales">0 تومان</div></div>
+            <div class="stat-card"><h3>سود خالص</h3><div class="value" id="netProfit">0 تومان</div></div>
+            <div class="stat-card"><h3>هزینه‌ها</h3><div class="value" id="totalExpenses">0 تومان</div></div>
+            <div class="stat-card"><h3>مشتریان</h3><div class="value" id="customerCount">0</div></div>
         </div>
 
-        <div class="percent-row">
-            <span>درصد سود روی محصولات:</span>
-            <input type="number" id="profitPercent" value="0" min="0" max="100" style="width:80px">
+        <div class="percent-settings">
+            <span>درصد سود:</span>
+            <input type="number" id="profitPercent" value="0" min="0" max="100" style="width:70px">
             <span>%</span>
-            <button onclick="applyPercent()" class="btn-warning">اعمال</button>
+            <button onclick="applyPercent()" class="btn-warning" style="padding:6px 12px">اعمال</button>
         </div>
 
         <div class="tabs">
@@ -353,23 +200,144 @@
             <button class="tab-btn" onclick="showTab('products')">محصولات</button>
             <button class="tab-btn" onclick="showTab('customers')">مشتریان</button>
             <button class="tab-btn" onclick="showTab('expenses')">هزینه‌ها</button>
-            <button class="tab-btn" onclick="showTab('checks')">چک‌ها</button>
             <button class="tab-btn" onclick="showTab('reports')">گزارشات</button>
             <button class="tab-btn" onclick="showTab('barcode')">بارکدساز</button>
             <button class="tab-btn" onclick="showTab('invoices')">فاکتورها</button>
         </div>
 
-        <!-- بقیه بخش‌ها مشابه قبل هستند اما به دلیل طولانی شدن حذف شدند -->
-        <!-- در صورت نیاز می‌توانید کد کامل را در ادامه قرار دهم -->
+        <!-- فروش -->
+        <div id="saleTab" class="tab-content active">
+            <div class="form-card" style="display:grid; gap:16px">
+                <div>
+                    <div class="form-group">
+                        <label>جستجو با بارکد:</label>
+                        <input type="text" id="barcodeSearch" placeholder="بارکد را اسکن کنید" onchange="findByBarcode()" style="font-family:monospace; text-align:center">
+                        <div style="font-size:11px; color:#888">626100000001</div>
+                    </div>
+                    <div class="form-group">
+                        <label>انتخاب محصول:</label>
+                        <select id="productSelect"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>تعداد:</label>
+                        <input type="number" id="qty" value="1" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>مشتری:</label>
+                        <select id="customerSelect"></select>
+                    </div>
+                    <div id="newCustomerDiv" style="display:none">
+                        <input type="text" id="newCustomerName" placeholder="نام مشتری جدید">
+                        <input type="text" id="newCustomerPhone" placeholder="شماره" style="margin-top:6px">
+                    </div>
+                    <button onclick="addToCart()" class="btn-success">➕ افزودن به سبد</button>
+                </div>
+                <div>
+                    <h4>سبد خرید</h4>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead><tr><th>محصول</th><th>تعداد</th><th>قیمت پایه</th><th>قیمت نهایی</th><th>مجموع</th><th></th></tr></thead>
+                            <tbody id="cartBody"></tbody>
+                            <tfoot><tr><td colspan="4"><strong>جمع کل</strong></td><td id="cartTotal">0</td><td></td></tr></tfoot>
+                        </table>
+                    </div>
+                    <button onclick="finalizeSale()" class="btn-success" style="width:100%; margin-top:12px">💰 ثبت فروش</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- محصولات -->
+        <div id="productsTab" class="tab-content">
+            <div class="form-card">
+                <h3>➕ محصول جدید</h3>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px">
+                    <input type="text" id="newBarcode" placeholder="بارکد">
+                    <input type="text" id="newName" placeholder="نام محصول">
+                    <input type="number" id="newPrice" placeholder="قیمت پایه">
+                    <input type="number" id="newStock" placeholder="موجودی">
+                    <button onclick="addProduct()" style="grid-column:span 2">افزودن</button>
+                </div>
+            </div>
+            <div class="form-card">
+                <h3>📦 لیست محصولات</h3>
+                <div class="table-wrapper"><table><thead><tr><th>بارکد</th><th>نام</th><th>قیمت پایه</th><th>قیمت نهایی</th><th>موجودی</th><th></th></tr></thead><tbody id="productsBody"></tbody></table></div>
+            </div>
+        </div>
+
+        <!-- مشتریان -->
+        <div id="customersTab" class="tab-content">
+            <div class="form-card">
+                <input type="text" id="customerSearch" placeholder="جستجو..." onkeyup="renderCustomers()" style="margin-bottom:10px">
+                <div class="table-wrapper"><table><thead><tr><th>نام</th><th>شماره</th><th>تعداد خرید</th><th>کل خرید</th><th></th></tr></thead><tbody id="customersBody"></tbody></table></div>
+            </div>
+        </div>
+
+        <!-- هزینه‌ها -->
+        <div id="expensesTab" class="tab-content">
+            <div class="form-card">
+                <h3>➕ هزینه جدید</h3>
+                <div style="display:grid; grid-template-columns:2fr 1fr; gap:8px">
+                    <input type="text" id="expenseDesc" placeholder="توضیحات">
+                    <input type="number" id="expenseAmount" placeholder="مبلغ">
+                    <button onclick="addExpense()" style="grid-column:span 2">ثبت</button>
+                </div>
+            </div>
+            <div class="form-card">
+                <h3>📋 لیست هزینه‌ها</h3>
+                <div class="table-wrapper"><table><thead><tr><th>تاریخ</th><th>توضیحات</th><th>مبلغ</th><th></th></tr></thead><tbody id="expensesBody"></tbody></table></div>
+            </div>
+        </div>
+
+        <!-- گزارشات -->
+        <div id="reportsTab" class="tab-content">
+            <div class="form-card">
+                <h3>گزارش سود و زیان</h3>
+                <div class="stats-grid" style="grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px">
+                    <div class="stat-card"><h3>کل فروش</h3><div class="value" id="repTotalSales">0</div></div>
+                    <div class="stat-card"><h3>کل هزینه‌ها</h3><div class="value" id="repTotalExpenses">0</div></div>
+                    <div class="stat-card"><h3>سود خالص</h3><div class="value" id="repNetProfit">0</div></div>
+                </div>
+                <h3>فروش ماهانه</h3>
+                <div class="table-wrapper"><table><thead><tr><th>ماه</th><th>تعداد فروش</th><th>مبلغ</th></tr></thead><tbody id="monthlySalesBody"></tbody></table></div>
+                <h3 style="margin-top:20px">محصولات پرفروش</h3>
+                <div class="table-wrapper"><table><thead><tr><th>محصول</th><th>تعداد فروش</th><th>مبلغ</th></tr></thead><tbody id="topProductsBody"></tbody></table></div>
+            </div>
+        </div>
+
+        <!-- بارکدساز -->
+        <div id="barcodeTab" class="tab-content">
+            <div class="form-card">
+                <h3>🏷️ ساخت بارکد</h3>
+                <div class="form-group"><label>انتخاب محصول:</label><select id="barcodeProductSelect"></select></div>
+                <div class="form-group"><label>یا وارد کردن بارکد:</label><input type="text" id="customBarcode" placeholder="مثال: 626100000001"></div>
+                <div class="form-group"><label>تعداد بارکد:</label><input type="number" id="barcodeCount" value="1" min="1" max="20"></div>
+                <button onclick="generateBarcodes()" class="btn-success">ساخت بارکد</button>
+                <div id="barcodeResult" style="display:none; margin-top:16px">
+                    <div id="barcodeList" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center"></div>
+                    <button onclick="printBarcodes()" class="btn-warning" style="margin-top:12px; width:100%">🖨️ چاپ بارکدها</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- فاکتورها -->
+        <div id="invoicesTab" class="tab-content">
+            <div class="form-card">
+                <h3>📄 لیست فاکتورها</h3>
+                <div class="table-wrapper"><table><thead><tr><th>شماره</th><th>تاریخ</th><th>مشتری</th><th>مبلغ</th><th></th></tr></thead><tbody id="invoicesBody"></tbody></table></div>
+            </div>
+        </div>
     </div>
 </div>
 
+<!-- مودال فاکتور -->
+<div id="invoiceModal" class="modal"><div class="modal-content" id="invoiceContent"></div></div>
+<div id="editModal" class="modal"><div class="modal-content"><h3>ویرایش محصول</h3><input type="hidden" id="editId"><div class="form-group"><label>بارکد:</label><input type="text" id="editBarcode"></div><div class="form-group"><label>نام:</label><input type="text" id="editName"></div><div class="form-group"><label>قیمت پایه:</label><input type="number" id="editPrice"></div><div class="form-group"><label>موجودی:</label><input type="number" id="editStock"></div><div style="display:flex; gap:12px; margin-top:20px"><button onclick="saveEdit()" class="btn-success">ذخیره</button><button onclick="closeEditModal()" class="btn-danger">انصراف</button></div></div></div>
+<div id="passModal" class="modal"><div class="modal-content"><h3>تغییر رمز عبور</h3><div class="form-group"><label>رمز فعلی:</label><input type="password" id="oldPass"></div><div class="form-group"><label>رمز جدید:</label><input type="password" id="newPass"></div><div class="form-group"><label>تکرار رمز جدید:</label><input type="password" id="confirmPass"></div><div id="passError" style="color:red; display:none"></div><div style="display:flex; gap:12px; margin-top:20px"><button onclick="changePassword()" class="btn-success">تغییر</button><button onclick="closePassModal()" class="btn-danger">انصراف</button></div></div></div>
+
 <script>
-    // ---------- داده‌های اولیه ----------
-    let products = [], invoices = [], expenses = [], customers = [], checks = [], cart = [];
+    let products = [], invoices = [], expenses = [], customers = [], cart = [];
     let currentPassword = "2580", profitPercent = 0;
 
-    // بارگذاری اطلاعات ذخیره شده
     let savedPass = localStorage.getItem('shopPass');
     if (savedPass) currentPassword = savedPass;
     let savedPercent = localStorage.getItem('shopPercent');
@@ -383,54 +351,49 @@
         { id: 2, barcode: "626100000002", name: "کت و شلوار سرمه ای", price: 1350000, stock: 12 },
         { id: 3, barcode: "626100000003", name: "کت و شلوار طوسی", price: 1180000, stock: 10 }
     ];
+
     let savedInvoices = localStorage.getItem('shopInvoices');
     invoices = savedInvoices ? JSON.parse(savedInvoices) : [];
     let savedExpenses = localStorage.getItem('shopExpenses');
     expenses = savedExpenses ? JSON.parse(savedExpenses) : [];
     let savedCustomers = localStorage.getItem('shopCustomers');
     customers = savedCustomers ? JSON.parse(savedCustomers) : [];
-    let savedChecks = localStorage.getItem('shopChecks');
-    checks = savedChecks ? JSON.parse(savedChecks) : [];
 
     function saveAll() {
         localStorage.setItem('shopProducts', JSON.stringify(products));
         localStorage.setItem('shopInvoices', JSON.stringify(invoices));
         localStorage.setItem('shopExpenses', JSON.stringify(expenses));
         localStorage.setItem('shopCustomers', JSON.stringify(customers));
-        localStorage.setItem('shopChecks', JSON.stringify(checks));
     }
 
     function backupData() {
-        const data = { products, invoices, expenses, customers, checks, profitPercent, currentPassword };
+        const data = { products, invoices, expenses, customers, profitPercent, currentPassword };
         const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        a.href = url;
-        a.download = `paris_backup_${new Date().toLocaleDateString('fa-IR')}.json`;
-        a.click();
-        URL.revokeObjectURL(url);
-        alert('خروجی با موفقیت ذخیره شد');
+        a.href = url; a.download = `paris_backup_${new Date().toLocaleDateString('fa-IR')}.json`;
+        a.click(); URL.revokeObjectURL(url);
+        alert('خروجی ذخیره شد');
     }
 
     function restoreData(input) {
         const file = input.files[0];
-        if (!file) return;
+        if(!file) return;
         const reader = new FileReader();
         reader.onload = e => {
             try {
                 const data = JSON.parse(e.target.result);
-                if (data.products) products = data.products;
-                if (data.invoices) invoices = data.invoices;
-                if (data.expenses) expenses = data.expenses;
-                if (data.customers) customers = data.customers;
-                if (data.checks) checks = data.checks;
-                if (data.profitPercent !== undefined) profitPercent = data.profitPercent;
-                if (data.currentPassword) currentPassword = data.currentPassword;
+                if(data.products) products = data.products;
+                if(data.invoices) invoices = data.invoices;
+                if(data.expenses) expenses = data.expenses;
+                if(data.customers) customers = data.customers;
+                if(data.profitPercent !== undefined) profitPercent = data.profitPercent;
+                if(data.currentPassword) currentPassword = data.currentPassword;
                 saveAll();
                 document.getElementById('profitPercent').value = profitPercent;
                 renderAll();
-                alert('اطلاعات با موفقیت بازیابی شد');
-            } catch(err) { alert('فایل نامعتبر است'); }
+                alert('بازیابی شد');
+            } catch(err) { alert('فایل نامعتبر'); }
         };
         reader.readAsText(file);
         input.value = '';
@@ -439,319 +402,212 @@
     function applyPercent() {
         profitPercent = parseInt(document.getElementById('profitPercent').value);
         localStorage.setItem('shopPercent', profitPercent);
-        renderCart();
-        updateSelects();
-        alert(`درصد سود روی ${profitPercent}% تنظیم شد`);
+        renderCart(); updateSelects(); alert(`سود ${profitPercent}%`);
     }
-
-    function getFinalPrice(price) {
-        return Math.round(price * (1 + profitPercent / 100));
-    }
+    function getFinalPrice(price) { return Math.round(price * (1 + profitPercent/100)); }
 
     function checkLogin() {
-        let pwd = document.getElementById('passInput').value;
-        if (pwd === currentPassword) {
+        if(document.getElementById('loginPass').value === currentPassword) {
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('mainApp').style.display = 'block';
             renderAll();
         } else {
-            document.getElementById('loginErrorMsg').style.display = 'block';
-            setTimeout(() => document.getElementById('loginErrorMsg').style.display = 'none', 2000);
+            document.getElementById('loginError').style.display = 'block';
+            setTimeout(() => document.getElementById('loginError').style.display = 'none', 2000);
         }
     }
 
     function renderAll() {
-        renderProducts();
-        renderCustomers();
-        renderExpenses();
-        renderInvoices();
-        renderChecks();
-        updateBalances();
-        updateSelects();
-        updateReports();
+        renderProducts(); renderCustomers(); renderExpenses(); renderInvoices();
+        updateBalances(); updateSelects(); updateReports();
     }
 
     function updateSelects() {
-        // این تابع برای پر کردن dropdown ها استفاده می‌شود
-        let prodSelect = document.getElementById('productSelect');
-        if (prodSelect) {
-            prodSelect.innerHTML = '<option value="">انتخاب کنید</option>';
-            for (let p of products) {
-                let finalPrice = getFinalPrice(p.price);
-                prodSelect.innerHTML += `<option value="${p.id}">${p.barcode} | ${p.name} - پایه: ${p.price.toLocaleString()} | نهایی: ${finalPrice.toLocaleString()} تومان</option>`;
-            }
-        }
-        // سایر selectها نیز مشابه
+        let s = document.getElementById('productSelect');
+        s.innerHTML = '<option value="">انتخاب کنید</option>';
+        for(let p of products) s.innerHTML += `<option value="${p.id}">${p.barcode} | ${p.name} - پایه: ${p.price.toLocaleString()} | نهایی: ${getFinalPrice(p.price).toLocaleString()} تومان</option>`;
+        let cs = document.getElementById('customerSelect');
+        cs.innerHTML = '<option value="none">بدون مشتری / جدید</option>';
+        for(let c of customers) cs.innerHTML += `<option value="${c.id}">${c.name}</option>`;
+        cs.onchange = () => document.getElementById('newCustomerDiv').style.display = cs.value === 'none' ? 'block' : 'none';
+        let bs = document.getElementById('barcodeProductSelect');
+        bs.innerHTML = '<option value="">انتخاب محصول</option>';
+        for(let p of products) bs.innerHTML += `<option value="${p.id}">${p.name} - ${p.barcode}</option>`;
+    }
+
+    function findByBarcode() {
+        let b = document.getElementById('barcodeSearch').value.trim();
+        if(!b) return;
+        let p = products.find(p=>p.barcode === b);
+        if(p) {
+            document.getElementById('productSelect').value = p.id;
+            alert(`${p.name}\nپایه: ${p.price.toLocaleString()}\nنهایی: ${getFinalPrice(p.price).toLocaleString()}\nموجودی: ${p.stock}`);
+            document.getElementById('qty').focus();
+        } else alert('بارکد یافت نشد');
+        document.getElementById('barcodeSearch').value = '';
+    }
+
+    function showTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+        document.getElementById(tab+'Tab').classList.add('active');
+        event.target.classList.add('active');
+        if(tab==='reports') updateReports();
     }
 
     function renderProducts() {
-        let html = '';
-        for (let p of products) {
-            let finalPrice = getFinalPrice(p.price);
-            html += `<tr>
-                <td style="font-family:monospace">${p.barcode}</td>
-                <td>${p.name}</td>
-                <td>${p.price.toLocaleString()}</td>
-                <td>${finalPrice.toLocaleString()} (${profitPercent}%)</td>
-                <td>${p.stock}</td>
-                <td><button class="btn-warning" onclick="openEdit(${p.id})">✏️</button>
-                    <button class="btn-danger" onclick="deleteProduct(${p.id})">🗑️</button></td>
-            </tr>`;
+        let h = '';
+        for(let p of products) {
+            let f = getFinalPrice(p.price);
+            h += `<tr><td>${p.barcode}</td><td>${p.name}</td><td>${p.price.toLocaleString()}</td><td>${f.toLocaleString()} (${profitPercent}%)</td><td>${p.stock}</td>
+            <td><button class="btn-warning" onclick="openEdit(${p.id})" style="padding:4px 8px">✏️</button> <button class="btn-danger" onclick="deleteProduct(${p.id})" style="padding:4px 8px">🗑️</button></td></tr>`;
         }
-        let tbody = document.getElementById('productsBody');
-        if (tbody) tbody.innerHTML = html;
+        document.getElementById('productsBody').innerHTML = h;
     }
 
-    // سایر توابع مشابه قبل...
-    function openEdit(id) {
-        let p = products.find(p => p.id === id);
-        if (p) {
-            // ایجاد مودال ویرایش
-            let newName = prompt("نام جدید:", p.name);
-            if (newName) p.name = newName;
-            let newPrice = prompt("قیمت پایه جدید:", p.price);
-            if (newPrice) p.price = parseInt(newPrice);
-            let newStock = prompt("موجودی جدید:", p.stock);
-            if (newStock) p.stock = parseInt(newStock);
-            let newBarcode = prompt("بارکد جدید:", p.barcode);
-            if (newBarcode) p.barcode = newBarcode;
-            saveAll();
-            renderProducts();
-            updateSelects();
-            alert("محصول ویرایش شد");
-        }
-    }
+    function openEdit(id) { let p = products.find(p=>p.id===id); if(p){ document.getElementById('editId').value=p.id; document.getElementById('editBarcode').value=p.barcode; document.getElementById('editName').value=p.name; document.getElementById('editPrice').value=p.price; document.getElementById('editStock').value=p.stock; document.getElementById('editModal').classList.add('active'); } }
+    function saveEdit() { let id=parseInt(document.getElementById('editId').value); let p=products.find(p=>p.id===id); if(p){ p.barcode=document.getElementById('editBarcode').value; p.name=document.getElementById('editName').value; p.price=parseInt(document.getElementById('editPrice').value); p.stock=parseInt(document.getElementById('editStock').value); saveAll(); renderProducts(); updateSelects(); closeEditModal(); alert('ویرایش شد'); } }
+    function closeEditModal() { document.getElementById('editModal').classList.remove('active'); }
 
-    function deleteProduct(id) {
-        if (confirm("آیا از حذف این محصول اطمینان دارید؟")) {
-            products = products.filter(p => p.id !== id);
-            saveAll();
-            renderProducts();
-            updateSelects();
-        }
+    function addProduct() {
+        let barcode = document.getElementById('newBarcode').value.trim();
+        let name = document.getElementById('newName').value.trim();
+        let price = parseInt(document.getElementById('newPrice').value);
+        let stock = parseInt(document.getElementById('newStock').value);
+        if(!name || isNaN(price) || isNaN(stock)) { alert("کامل وارد کنید"); return; }
+        if(!barcode) barcode = "626" + Date.now().toString().slice(-10);
+        if(products.find(p=>p.barcode===barcode)) { alert("بارکد تکراری"); return; }
+        products.push({ id: Date.now(), barcode, name, price, stock });
+        saveAll(); renderProducts(); updateSelects();
+        document.getElementById('newBarcode').value=''; document.getElementById('newName').value='';
+        document.getElementById('newPrice').value=''; document.getElementById('newStock').value='';
+        alert("محصول اضافه شد");
     }
+    function deleteProduct(id) { if(confirm("حذف شود؟")) { products = products.filter(p=>p.id!==id); saveAll(); renderProducts(); updateSelects(); } }
 
     function addToCart() {
-        let select = document.getElementById('productSelect');
-        if (!select) return;
-        let id = parseInt(select.value);
-        let qty = parseInt(document.getElementById('qty').value);
-        let p = products.find(p => p.id === id);
-        if (!p) { alert("محصول را انتخاب کنید"); return; }
-        if (qty > p.stock) { alert("موجودی کافی نیست"); return; }
-        let existing = cart.find(i => i.id === id);
-        if (existing) existing.qty += qty;
-        else cart.push({ id: p.id, name: p.name, basePrice: p.price, finalPrice: getFinalPrice(p.price), qty });
+        let id = parseInt(document.getElementById('productSelect').value);
+        let q = parseInt(document.getElementById('qty').value);
+        let p = products.find(p=>p.id===id);
+        if(!p) { alert("محصول را انتخاب کنید"); return; }
+        if(q > p.stock) { alert("موجودی کافی نیست"); return; }
+        let ex = cart.find(i=>i.id===id);
+        if(ex) ex.qty += q;
+        else cart.push({ id: p.id, name: p.name, basePrice: p.price, finalPrice: getFinalPrice(p.price), qty: q });
         renderCart();
         document.getElementById('qty').value = '1';
     }
-
+    function removeFromCart(index) { cart.splice(index,1); renderCart(); }
     function renderCart() {
-        let total = 0;
-        let html = '';
-        for (let i = 0; i < cart.length; i++) {
+        let total=0, h='';
+        for(let i=0;i<cart.length;i++) {
             let item = cart[i];
             let sum = item.finalPrice * item.qty;
             total += sum;
-            html += `<tr>
-                <td>${item.name}</td>
-                <td>${item.qty}</td>
-                <td>${item.basePrice.toLocaleString()}</td>
-                <td>${item.finalPrice.toLocaleString()}</td>
-                <td>${sum.toLocaleString()}</td>
-                <td><button class="btn-danger" onclick="removeFromCart(${i})">حذف</button></td>
-            </tr>`;
+            h += `<tr><td>${item.name}</td><td>${item.qty}</td><td>${item.basePrice.toLocaleString()}</td><td>${item.finalPrice.toLocaleString()}</td><td>${sum.toLocaleString()}</td>
+            <td><button class="btn-danger" onclick="removeFromCart(${i})">حذف</button></td></tr>`;
         }
-        let tbody = document.getElementById('cartBody');
-        if (tbody) tbody.innerHTML = html;
-        let totalSpan = document.getElementById('cartTotal');
-        if (totalSpan) totalSpan.innerHTML = total.toLocaleString();
-    }
-
-    function removeFromCart(index) {
-        cart.splice(index, 1);
-        renderCart();
+        document.getElementById('cartBody').innerHTML = h;
+        document.getElementById('cartTotal').innerHTML = total.toLocaleString();
     }
 
     function finalizeSale() {
-        if (cart.length === 0) { alert("سبد خرید خالی است"); return; }
+        if(cart.length===0) { alert("سبد خرید خالی"); return; }
+        let customerName = "مشتری عادی";
+        let selected = document.getElementById('customerSelect').value;
+        if(selected === 'none') {
+            let newName = document.getElementById('newCustomerName').value.trim();
+            if(newName) {
+                let newCust = { id: Date.now(), name: newName, phone: document.getElementById('newCustomerPhone').value, totalPurchases:0, totalAmount:0 };
+                customers.push(newCust);
+                customerName = newName;
+            }
+        } else {
+            let cust = customers.find(c=>c.id==selected);
+            if(cust) customerName = cust.name;
+        }
         let totalAmount = 0;
-        for (let item of cart) {
+        for(let item of cart) {
             totalAmount += item.finalPrice * item.qty;
-            let p = products.find(p => p.id === item.id);
-            if (p) p.stock -= item.qty;
+            let p = products.find(p=>p.id===item.id);
+            if(p) p.stock -= item.qty;
+        }
+        if(selected !== 'none') {
+            let cust = customers.find(c=>c.id==selected);
+            if(cust) { cust.totalPurchases = (cust.totalPurchases||0)+1; cust.totalAmount = (cust.totalAmount||0)+totalAmount; }
         }
         let invoice = {
-            id: Date.now(),
-            number: "PRS-" + Date.now().toString().slice(-8),
-            date: new Date().toLocaleDateString('fa-IR'),
-            time: new Date().toLocaleTimeString('fa-IR'),
-            customerName: "مشتری عادی",
-            items: cart.map(item => ({ name: item.name, qty: item.qty, price: item.finalPrice })),
-            total: totalAmount,
-            percent: profitPercent
+            id: Date.now(), number: "PRS-"+Date.now().toString().slice(-8),
+            date: new Date().toLocaleDateString('fa-IR'), time: new Date().toLocaleTimeString('fa-IR'),
+            customerName, items: cart.map(item=>({ name:item.name, qty:item.qty, price:item.finalPrice })),
+            total: totalAmount, percent: profitPercent
         };
         invoices.unshift(invoice);
         saveAll();
-        alert(`فاکتور ${invoice.number} با مبلغ ${totalAmount.toLocaleString()} تومان ثبت شد`);
+        showInvoice(invoice);
         cart = [];
-        renderCart();
-        renderProducts();
-        updateSelects();
-        updateBalances();
-        updateReports();
+        renderCart(); renderProducts(); renderCustomers(); updateSelects(); updateBalances(); updateReports();
     }
 
     function renderCustomers() {
-        let html = '';
-        for (let c of customers) {
-            html += `<tr>
-                <td>${c.name}</td>
-                <td>${c.phone || '-'}</td>
-                <td>${c.totalPurchases || 0}</td>
-                <td>${(c.totalAmount || 0).toLocaleString()} تومان</td>
-                <td><button class="btn-danger" onclick="deleteCustomer(${c.id})">حذف</button></td>
-            </tr>`;
-        }
-        let tbody = document.getElementById('customersBody');
-        if (tbody) tbody.innerHTML = html;
-        let countSpan = document.getElementById('customerCount');
-        if (countSpan) countSpan.innerHTML = customers.length;
+        let search = document.getElementById('customerSearch').value.toLowerCase();
+        let filtered = customers.filter(c=>c.name.toLowerCase().includes(search));
+        let h='';
+        for(let c of filtered) h += `<tr><td>${c.name}</td><td>${c.phone||'-'}</td><td>${c.totalPurchases||0}</td><td>${(c.totalAmount||0).toLocaleString()} تومان</td><td><button class="btn-danger" onclick="deleteCustomer(${c.id})">حذف</button></td></tr>`;
+        document.getElementById('customersBody').innerHTML = h;
+        document.getElementById('customerCount').innerHTML = customers.length;
     }
-
-    function deleteCustomer(id) {
-        customers = customers.filter(c => c.id !== id);
-        saveAll();
-        renderCustomers();
-    }
+    function deleteCustomer(id) { customers = customers.filter(c=>c.id!==id); saveAll(); renderCustomers(); updateSelects(); }
 
     function addExpense() {
         let desc = document.getElementById('expenseDesc').value.trim();
         let amount = parseInt(document.getElementById('expenseAmount').value);
-        if (!desc || isNaN(amount)) { alert("اطلاعات کامل وارد کنید"); return; }
+        if(!desc || isNaN(amount)) { alert("کامل وارد کنید"); return; }
         expenses.unshift({ id: Date.now(), date: new Date().toLocaleDateString('fa-IR'), description: desc, amount });
-        saveAll();
-        renderExpenses();
-        updateBalances();
-        updateReports();
-        document.getElementById('expenseDesc').value = '';
-        document.getElementById('expenseAmount').value = '';
+        saveAll(); renderExpenses(); updateBalances(); updateReports();
+        document.getElementById('expenseDesc').value = ''; document.getElementById('expenseAmount').value = '';
     }
-
     function renderExpenses() {
-        let html = '';
-        for (let e of expenses) {
-            html += `<tr>
-                <td>${e.date}</td>
-                <td>${e.description}</td>
-                <td style="color:#dc3545">-${e.amount.toLocaleString()} تومان</td>
-                <td><button class="btn-danger" onclick="deleteExpense(${e.id})">حذف</button></td>
-            </tr>`;
-        }
-        let tbody = document.getElementById('expensesBody');
-        if (tbody) tbody.innerHTML = html;
+        let h='';
+        for(let e of expenses) h += `<tr><td>${e.date}</td><td>${e.description}</td><td style="color:#dc3545">-${e.amount.toLocaleString()} تومان</td><td><button class="btn-danger" onclick="deleteExpense(${e.id})">حذف</button></td></tr>`;
+        document.getElementById('expensesBody').innerHTML = h;
     }
-
-    function deleteExpense(id) {
-        expenses = expenses.filter(e => e.id !== id);
-        saveAll();
-        renderExpenses();
-        updateBalances();
-        updateReports();
-    }
-
-    function renderChecks() {
-        let html = '';
-        for (let ch of checks) {
-            let statusText = { pending: 'در انتظار وصول', cleared: 'وصول شده', returned: 'برگشتی' }[ch.status];
-            html += `<tr>
-                <td>${ch.customerName}</td>
-                <td>${ch.amount.toLocaleString()} تومان</td>
-                <td>${ch.checkNumber || '-'}</td>
-                <td>${ch.issueDate || '-'}</td>
-                <td>${ch.dueDate || '-'}</td>
-                <td>${ch.bank || '-'}</td>
-                <td style="color:${ch.status === 'pending' ? 'orange' : (ch.status === 'cleared' ? 'green' : 'red')}">${statusText}</td>
-                <td><button class="btn-warning" onclick="editCheck(${ch.id})">✏️</button>
-                    <button class="btn-danger" onclick="deleteCheck(${ch.id})">🗑️</button></td>
-            </tr>`;
-        }
-        let tbody = document.getElementById('checksBody');
-        if (tbody) tbody.innerHTML = html || '<tr><td colspan="8">هیچ چکی ثبت نشده است</td></tr>';
-        let totalPending = checks.filter(ch => ch.status === 'pending').reduce((s, ch) => s + ch.amount, 0);
-        let pendingSpan = document.getElementById('totalPendingChecks');
-        if (pendingSpan) pendingSpan.innerHTML = totalPending.toLocaleString() + ' تومان';
-    }
-
-    function addCheck() {
-        let customerId = document.getElementById('checkCustomerSelect').value;
-        if (!customerId) { alert("لطفاً مشتری را انتخاب کنید"); return; }
-        let amount = parseFloat(document.getElementById('checkAmount').value);
-        if (isNaN(amount) || amount <= 0) { alert("مبلغ معتبر وارد کنید"); return; }
-        let customer = customers.find(c => c.id == customerId);
-        checks.unshift({
-            id: Date.now(),
-            customerId: parseInt(customerId),
-            customerName: customer ? customer.name : '',
-            amount: amount,
-            checkNumber: document.getElementById('checkNumber').value,
-            issueDate: document.getElementById('checkIssueDate').value,
-            dueDate: document.getElementById('checkDueDate').value,
-            bank: document.getElementById('checkBank').value,
-            status: document.getElementById('checkStatus').value
-        });
-        saveAll();
-        renderChecks();
-        alert("چک ثبت شد");
-        // پاک کردن فرم
-        document.getElementById('checkAmount').value = '';
-        document.getElementById('checkNumber').value = '';
-        document.getElementById('checkIssueDate').value = '';
-        document.getElementById('checkDueDate').value = '';
-        document.getElementById('checkBank').value = '';
-    }
-
-    function editCheck(id) {
-        let ch = checks.find(c => c.id === id);
-        if (ch) {
-            let newStatus = prompt("وضعیت جدید (pending/cleared/returned):", ch.status);
-            if (newStatus) ch.status = newStatus;
-            let newAmount = prompt("مبلغ جدید:", ch.amount);
-            if (newAmount) ch.amount = parseFloat(newAmount);
-            saveAll();
-            renderChecks();
-            alert("چک ویرایش شد");
-        }
-    }
-
-    function deleteCheck(id) {
-        if (confirm("آیا از حذف این چک اطمینان دارید؟")) {
-            checks = checks.filter(c => c.id !== id);
-            saveAll();
-            renderChecks();
-        }
-    }
+    function deleteExpense(id) { expenses = expenses.filter(e=>e.id!==id); saveAll(); renderExpenses(); updateBalances(); updateReports(); }
 
     function renderInvoices() {
-        let html = '';
-        for (let inv of invoices) {
-            html += `<tr>
-                <td>${inv.number}</td>
-                <td>${inv.date}</td>
-                <td>${inv.customerName}</td>
-                <td>${inv.total.toLocaleString()} تومان</td>
-                <td><button class="btn-success" onclick="alert('فاکتور ${inv.number}\nمبلغ: ${inv.total.toLocaleString()} تومان')">مشاهده</button></td>
-            </tr>`;
-        }
-        let tbody = document.getElementById('invoicesBody');
-        if (tbody) tbody.innerHTML = html;
+        let h='';
+        for(let inv of invoices) h += `<tr><td>${inv.number}</td><td>${inv.date}</td><td>${inv.customerName}</td><td>${inv.total.toLocaleString()} تومان</td><td><button class="btn-success" onclick='showInvoice(${JSON.stringify(inv).replace(/'/g,"&#39;")})'>مشاهده</button></td></tr>`;
+        document.getElementById('invoicesBody').innerHTML = h;
     }
 
+    function showInvoice(inv) {
+        let items='';
+        for(let item of inv.items) items += `<tr><td>${item.name}</td><td style="text-align:center">${item.qty}</td><td>${item.price.toLocaleString()}</td><td>${(item.price*item.qty).toLocaleString()}</td></tr>`;
+        document.getElementById('invoiceContent').innerHTML = `
+            <div class="print-area" style="padding:12px;font-family:monospace">
+                <div style="text-align:center;border-bottom:1px solid #333;padding-bottom:8px">
+                    <div style="font-size:16px;font-weight:bold">پوشاک تخصصی پاریس</div>
+                    <div>کت و شلوار مردانه</div>
+                </div>
+                <div style="margin:8px 0"><div>شماره: ${inv.number}</div><div>تاریخ: ${inv.date} ${inv.time}</div><div>مشتری: ${inv.customerName}</div></div>
+                <div style="border-top:1px dashed #333;border-bottom:1px dashed #333">
+                    <table style="width:100%"><thead><tr><th>محصول</th><th>تعداد</th><th>قیمت</th><th>مجموع</th></tr></thead><tbody>${items}</tbody>
+                    <tfoot><tr><td colspan="3"><strong>جمع کل</strong></td><td><strong>${inv.total.toLocaleString()} تومان</strong></td></tr></tfoot></table>
+                </div>
+                <div style="text-align:center;font-size:9px;margin-top:8px">
+                    <div>اصفهان، نجف آباد، خیابان دکتر شریعتی</div><div>تلفن: 09133322703</div><div>7 روز گارانتی</div>
+                </div>
+                <div style="margin-top:12px;display:flex;gap:10px"><button onclick="window.print()" class="btn-success">چاپ</button><button onclick="closeInvoiceModal()" class="btn-danger">بستن</button></div>
+            </div>`;
+        document.getElementById('invoiceModal').classList.add('active');
+    }
+    function closeInvoiceModal() { document.getElementById('invoiceModal').classList.remove('active'); }
+
     function updateBalances() {
-        let totalSales = invoices.reduce((s, i) => s + i.total, 0);
-        let totalExpenses = expenses.reduce((s, e) => s + e.amount, 0);
+        let totalSales = invoices.reduce((s,i)=>s+i.total,0);
+        let totalExpenses = expenses.reduce((s,e)=>s+e.amount,0);
         let today = new Date().toLocaleDateString('fa-IR');
-        let todaySales = invoices.filter(i => i.date === today).reduce((s, i) => s + i.total, 0);
+        let todaySales = invoices.filter(i=>i.date===today).reduce((s,i)=>s+i.total,0);
         document.getElementById('totalBalance').innerHTML = (totalSales - totalExpenses).toLocaleString() + ' تومان';
         document.getElementById('todaySales').innerHTML = todaySales.toLocaleString() + ' تومان';
         document.getElementById('totalSales').innerHTML = totalSales.toLocaleString() + ' تومان';
@@ -760,152 +616,84 @@
     }
 
     function updateReports() {
-        let totalSales = invoices.reduce((s, i) => s + i.total, 0);
-        let totalExpenses = expenses.reduce((s, e) => s + e.amount, 0);
+        let totalSales = invoices.reduce((s,i)=>s+i.total,0);
+        let totalExpenses = expenses.reduce((s,e)=>s+e.amount,0);
         document.getElementById('repTotalSales').innerHTML = totalSales.toLocaleString() + ' تومان';
         document.getElementById('repTotalExpenses').innerHTML = totalExpenses.toLocaleString() + ' تومان';
         document.getElementById('repNetProfit').innerHTML = (totalSales - totalExpenses).toLocaleString() + ' تومان';
-        
-        // فروش ماهانه
         let monthly = {};
-        for (let inv of invoices) {
-            let month = inv.date.split('/')[1];
-            if (!monthly[month]) monthly[month] = { count: 0, amount: 0 };
-            monthly[month].count++;
-            monthly[month].amount += inv.total;
+        for(let inv of invoices) {
+            let m = inv.date.split('/')[1];
+            if(!monthly[m]) monthly[m]={count:0, amount:0};
+            monthly[m].count++; monthly[m].amount += inv.total;
         }
-        let monthlyHtml = '';
-        for (let m in monthly) {
-            monthlyHtml += `<tr><td>ماه ${m}</td><td>${monthly[m].count}</td><td>${monthly[m].amount.toLocaleString()} تومان</td></tr>`;
-        }
-        let monthlyBody = document.getElementById('monthlySalesBody');
-        if (monthlyBody) monthlyBody.innerHTML = monthlyHtml || '<tr><td colspan="3">هیچ داده‌ای وجود ندارد</td></tr>';
-        
-        // محصولات پرفروش
+        let mh = '';
+        for(let mm in monthly) mh += `<tr><td>ماه ${mm}</td><td>${monthly[mm].count}</td><td>${monthly[mm].amount.toLocaleString()} تومان</td></tr>`;
+        document.getElementById('monthlySalesBody').innerHTML = mh || '<tr><td colspan="3">هیچ داده‌ای نیست</td></tr>';
         let productSales = {};
-        for (let inv of invoices) {
-            for (let item of inv.items) {
-                if (!productSales[item.name]) productSales[item.name] = { qty: 0, amount: 0 };
-                productSales[item.name].qty += item.qty;
-                productSales[item.name].amount += item.price * item.qty;
-            }
+        for(let inv of invoices) for(let item of inv.items) {
+            if(!productSales[item.name]) productSales[item.name]={qty:0, amount:0};
+            productSales[item.name].qty += item.qty;
+            productSales[item.name].amount += item.price * item.qty;
         }
-        let topItems = Object.entries(productSales).map(([n, d]) => ({ name: n, qty: d.qty, amount: d.amount }));
-        topItems.sort((a, b) => b.qty - a.qty);
-        let topHtml = '';
-        for (let i = 0; i < Math.min(5, topItems.length); i++) {
-            topHtml += `<tr><td>${topItems[i].name}</td><td>${topItems[i].qty}</td><td>${topItems[i].amount.toLocaleString()} تومان</td></tr>`;
-        }
-        let topBody = document.getElementById('topProductsBody');
-        if (topBody) topBody.innerHTML = topHtml || '<tr><td colspan="3">هیچ فروشی ثبت نشده</td></tr>';
+        let top = Object.entries(productSales).map(([n,d])=>({name:n, qty:d.qty, amount:d.amount})).sort((a,b)=>b.qty-a.qty).slice(0,5);
+        let th = '';
+        for(let t of top) th += `<tr><td>${t.name}</td><td>${t.qty}</td><td>${t.amount.toLocaleString()} تومان</td></tr>`;
+        document.getElementById('topProductsBody').innerHTML = th || '<tr><td colspan="3">هیچ فروشی ثبت نشده</td></tr>';
     }
 
     function generateBarcodes() {
-        let productId = document.getElementById('barcodeProductSelect').value;
-        let customBarcode = document.getElementById('customBarcode').value.trim();
+        let pid = document.getElementById('barcodeProductSelect').value;
+        let custom = document.getElementById('customBarcode').value.trim();
         let count = parseInt(document.getElementById('barcodeCount').value);
-        let barcodeValue = '', productName = '';
-        
-        if (productId) {
-            let p = products.find(p => p.id == productId);
-            barcodeValue = p.barcode;
-            productName = p.name;
-        } else if (customBarcode) {
-            barcodeValue = customBarcode;
-            productName = 'بارکد سفارشی';
-        } else {
-            alert("لطفاً محصول را انتخاب کنید یا بارکد را وارد کنید");
-            return;
-        }
-        
+        let barcode = '', name = '';
+        if(pid) { let p = products.find(p=>p.id==pid); barcode=p.barcode; name=p.name; }
+        else if(custom) { barcode=custom; name='بارکد سفارشی'; }
+        else { alert("محصول یا بارکد را وارد کنید"); return; }
         let html = '';
-        for (let i = 0; i < count; i++) {
-            let svg = `<svg width="140" height="30" xmlns="http://www.w3.org/2000/svg">`;
-            let x = 2;
-            for (let ch of barcodeValue.toString()) {
-                let digit = parseInt(ch);
-                if (!isNaN(digit)) {
-                    let width = (digit % 2 === 0) ? 2 : 1;
-                    svg += `<rect x="${x}" y="2" width="${width}" height="26" fill="black" />`;
-                    x += width + 1;
-                } else {
-                    x += 3;
+        for(let i=0; i<count; i++) {
+            html += `<div class="barcode-container"><div style="font-weight:bold;font-size:11px">${name}</div><canvas id="bc${i}" width="120" height="28"></canvas><div class="barcode-number">${barcode}</div></div>`;
+        }
+        document.getElementById('barcodeList').innerHTML = html;
+        document.getElementById('barcodeResult').style.display = 'block';
+        setTimeout(() => {
+            for(let i=0;i<count;i++) {
+                let cv = document.getElementById('bc'+i);
+                if(cv) {
+                    let ctx = cv.getContext('2d');
+                    ctx.fillStyle='white'; ctx.fillRect(0,0,cv.width,cv.height);
+                    let x=2;
+                    for(let ch of barcode.toString()) {
+                        let digit = parseInt(ch);
+                        if(!isNaN(digit)) {
+                            let w = (digit%2===0)?2:1;
+                            ctx.fillStyle='black'; ctx.fillRect(x,2,w,24);
+                            x+=w+1;
+                        } else x+=3;
+                    }
                 }
             }
-            svg += `</svg>`;
-            html += `
-                <div class="barcode-box">
-                    <div style="font-weight:bold; margin-bottom:4px;">${productName}</div>
-                    ${svg}
-                    <div class="barcode-number">${barcodeValue}</div>
-                </div>
-            `;
-        }
-        let listDiv = document.getElementById('barcodeList');
-        if (listDiv) listDiv.innerHTML = html;
-        let resultDiv = document.getElementById('barcodeResult');
-        if (resultDiv) resultDiv.style.display = 'block';
+        }, 50);
     }
-
     function printBarcodes() {
         let content = document.getElementById('barcodeList').innerHTML;
-        let win = window.open('', '_blank');
-        win.document.write(`
-            <html>
-            <head>
-                <title>چاپ بارکد</title>
-                <style>
-                    body { text-align: center; font-family: Arial; direction: rtl; }
-                    .barcode-box { width: 160px; margin: 8px; padding: 8px; border: 1px solid #ccc; display: inline-block; }
-                </style>
-            </head>
-            <body>
-                <h2>پوشاک تخصصی پاریس</h2>
-                <p>بارکد محصولات</p>
-                <hr>
-                ${content}
-                <script>window.print(); window.close();<\/script>
-            </body>
-            </html>
-        `);
+        let win = window.open('','_blank');
+        win.document.write('<html><head><title>چاپ بارکد</title><style>body{text-align:center;font-family:Arial;direction:rtl}.barcode-container{width:140px;margin:8px;padding:8px;border:1px solid #ccc;display:inline-block}</style></head><body><h2>پوشاک تخصصی پاریس</h2><hr>'+content+'<script>window.print();window.close();<\/script></body></html>');
         win.document.close();
     }
 
-    function showTab(tab) {
-        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        let tabDiv = document.getElementById(tab + 'Tab');
-        if (tabDiv) tabDiv.classList.add('active');
-        if (event && event.target) event.target.classList.add('active');
-        if (tab === 'reports') updateReports();
-        if (tab === 'checks') renderChecks();
+    function showPassModal() { document.getElementById('passModal').classList.add('active'); }
+    function closePassModal() { document.getElementById('passModal').classList.remove('active'); }
+    function changePassword() {
+        let old=document.getElementById('oldPass').value, newp=document.getElementById('newPass').value, conf=document.getElementById('confirmPass').value;
+        if(old!==currentPassword) { document.getElementById('passError').innerHTML="رمز فعلی اشتباه"; document.getElementById('passError').style.display='block'; return; }
+        if(newp.length<4) { document.getElementById('passError').innerHTML="حداقل 4 کاراکتر"; document.getElementById('passError').style.display='block'; return; }
+        if(newp!==conf) { document.getElementById('passError').innerHTML="تکرار مطابقت ندارد"; document.getElementById('passError').style.display='block'; return; }
+        currentPassword=newp; localStorage.setItem('shopPass',currentPassword); alert("رمز تغییر کرد"); closePassModal();
     }
-
-    function showPassModal() {
-        let newPass = prompt("رمز جدید را وارد کنید (حداقل 4 کاراکتر):");
-        if (newPass && newPass.length >= 4) {
-            currentPassword = newPass;
-            localStorage.setItem('shopPass', currentPassword);
-            alert("رمز با موفقیت تغییر کرد");
-        } else if (newPass) {
-            alert("رمز جدید باید حداقل 4 کاراکتر باشد");
-        }
-    }
-
     function logout() {
-        if (confirm("خروج از سیستم؟")) {
-            document.getElementById('loginScreen').style.display = 'flex';
-            document.getElementById('mainApp').style.display = 'none';
-            document.getElementById('passInput').value = '';
-        }
+        if(confirm("خروج؟")) { document.getElementById('loginScreen').style.display='flex'; document.getElementById('mainApp').style.display='none'; document.getElementById('loginPass').value=''; }
     }
-
-    // عناصر HTML که نیاز به اضافه شدن دارند (اگر در کد نباشند، با خطا مواجه نمی‌شویم)
-    // برای جلوگیری از خطا، المان‌های لازم را بررسی می‌کنیم
-    window.onload = function() {
-        // اگر برخی از المان‌ها وجود نداشتند، خطا ندهد
-        console.log("برنامه بارگذاری شد");
-    };
 </script>
 </body>
 </html>
